@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feuille de Route Berenis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --accent-color: #000091;
+            --secondary-color: #123765;
+            --success-color: #5b8c5a;
+            --progress-color: #ea580c;
+            --text-color: #1e1e1e;
+            --text-muted: #666666;
+            --border-color: #e0e0e0;
+            --line-width: 4px;
+            --marker-size: 24px;
+            --marker-border: 4px;
+            --content-left: 80px;
+            --line-center: 40px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            color: var(--text-color);
+            font-variant-numeric: lining-nums;
+        }
+
+        .header {
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 40px 60px;
+            position: relative;
+        }
+
+        /* Ligne verticale de la timeline */
+        .timeline {
+            position: relative;
+            padding-left: var(--content-left);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: calc(var(--line-center) - var(--line-width) / 2);
+            top: 0;
+            bottom: 0;
+            width: var(--line-width);
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .milestone-block {
+            position: relative;
+            display: flex;
+            margin-bottom: 50px;
+        }
+
+        .milestone-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .milestone-marker {
+            position: absolute;
+            left: calc(-1 * var(--content-left) + var(--line-center) - var(--marker-size) / 2 - var(--marker-border));
+            width: calc(var(--marker-size) + 2 * var(--marker-border));
+            height: calc(var(--marker-size) + 2 * var(--marker-border));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Marqueur cercle évidé (jalon non courant) */
+        .marker.hollow {
+            width: var(--marker-size);
+            height: var(--marker-size);
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: var(--marker-border) solid var(--accent-color);
+            position: relative;
+        }
+
+        /* Marqueur disque plein (jalon courant) */
+        .marker.filled {
+            width: calc(var(--marker-size) + 2 * var(--marker-border));
+            height: calc(var(--marker-size) + 2 * var(--marker-border));
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        /* Jalons passés */
+        .milestone-block.past .marker.hollow {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .milestone-content {
+            flex: 1;
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .milestone-block.current .milestone-content {
+            border-color: var(--accent-color);
+            border-width: 2px;
+        }
+
+        .milestone-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .milestone-progress-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--progress-color);
+            background: rgba(255, 149, 0, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .steps-list {
+            list-style: none;
+        }
+
+        .steps-list li {
+            margin-bottom: 10px;
+        }
+
+        .steps-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .steps-list label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: default;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Checkbox personnalisée avec progression */
+        .step-checkbox {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            background: transparent;
+            margin-top: 2px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .step-checkbox.complete {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .step-checkbox.in-progress {
+            border-color: var(--progress-color);
+        }
+
+        .step-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: var(--progress);
+            background-color: var(--progress-color);
+            opacity: 0.3;
+        }
+
+        .step-checkbox .checkmark {
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .steps-list span {
+            color: var(--text-color);
+        }
+
+        .steps-list span.complete {
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .progress-label {
+            font-size: 0.8rem;
+            color: var(--progress-color);
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+    
+            .container {
+                padding: 20px;
+            }
+    
+            :root {
+                --content-left: 60px;
+                --line-center: 30px;
+            }
+
+            .milestone-content {
+                padding: 16px;
+            }
+
+            .milestone-title {
+                font-size: 1.1rem;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Feuille de route Berenis</h1>
+        <p class="subtitle">Suivi des jalons et étapes du projet</p>
+    </header>
+
+    <main class="container">
+        <div class="timeline">
+
+                <div class="milestone-block current ">
+                    <div class="milestone-marker">
+                        <div class="marker filled" style="--milestone-progress: 60%">
+                        </div>
+                    </div>
+                    <div class="milestone-content">
+                        <h2 class="milestone-title">
+                            Berenis “montrable” (v1.0.0-alphaX)
+                            <span class="milestone-progress-label">60%</span>
+                            
+                        </h2>
+                        <ul class="steps-list">
+                        <li>
+                            <label>
+                                <div class="step-checkbox  in-progress">
+                                    <div class="step-progress" style="--progress: 70%"></div>
+                                    
+                                </div>
+                                <span class="">Appliquer les corrections et améliorations</span>
+                                <span class="progress-label">70%</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox complete ">
+                                    
+                                    <span class="checkmark">✓</span>
+                                </div>
+                                <span class="complete">Améliorer la mise en évidence de la structure</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Améliorer les performances de l&#039;API (back-only)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  in-progress">
+                                    <div class="step-progress" style="--progress: 10%"></div>
+                                    
+                                </div>
+                                <span class="">Terminer l&#039;étape Barre d&#039;outils (sarbacane)</span>
+                                <span class="progress-label">10%</span>
+                            </label>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="milestone-block  ">
+                    <div class="milestone-marker">
+                        <div class="marker hollow" >
+                        </div>
+                    </div>
+                    <div class="milestone-content">
+                        <h2 class="milestone-title">
+                            Berenis “MVP” (v1.0.0-beta1)
+                            
+                            
+                        </h2>
+                        <ul class="steps-list">
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Liste chronologique des modifications (sarbacane)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Localisation (sarbacane)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Avoir un outil de recherche</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  in-progress">
+                                    <div class="step-progress" style="--progress: 80%"></div>
+                                    
+                                </div>
+                                <span class="">Analyse globale (ADEME) (back-only)</span>
+                                <span class="progress-label">80%</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  in-progress">
+                                    <div class="step-progress" style="--progress: 35%"></div>
+                                    
+                                </div>
+                                <span class="">Analyse globale (ADEME)</span>
+                                <span class="progress-label">35%</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Afficher des graphiques minimalistes dans les fiches du volet de droite</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Choix des calques (ronds jaunes et bleus, nom des postes, souterrain...)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox complete ">
+                                    
+                                    <span class="checkmark">✓</span>
+                                </div>
+                                <span class="complete">Effectuer les calculs BT en repartant de la tension MT amont</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Afficher les capacités d&#039;accueil sur la carte (version simple)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Pouvoir faire un export au format DGS (et RLF ?)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Plan de tests (humain)</span>
+                                
+                            </label>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="milestone-block  ">
+                    <div class="milestone-marker">
+                        <div class="marker hollow" >
+                        </div>
+                    </div>
+                    <div class="milestone-content">
+                        <h2 class="milestone-title">
+                            Berenis “déployable” (v1.0.0)
+                            
+                            
+                        </h2>
+                        <ul class="steps-list">
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Rétablir des tests de bout en bout</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Pouvoir sélectionner une structure</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Avoir une page d&#039;authentification propre (via SSO)</span>
+                                
+                            </label>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="milestone-block  ">
+                    <div class="milestone-marker">
+                        <div class="marker hollow" >
+                        </div>
+                    </div>
+                    <div class="milestone-content">
+                        <h2 class="milestone-title">
+                            Berenis 1.x.0
+                            
+                            
+                        </h2>
+                        <ul class="steps-list">
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Afficher les coûts des modifications (calcul économique)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Introduire la notion de limite de tension doctrinale en BT</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Sélection multiple</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Choix du fond de carte (plan, satellite)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Fonctionnalités d&#039;aperçu dans la modale d&#039;ouverture de projet</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Avoir des graphiques améliorés</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Proposer une version “grand public”</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Savoir calculer avec du triphasé déséquilibré (dont renfo auto, et capacité d&#039;accueil)</span>
+                                
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="step-checkbox  ">
+                                    
+                                    
+                                </div>
+                                <span class="">Signaler les &quot;problèmes&quot; d&#039;un projet</span>
+                                
+                            </label>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Généré automatiquement le 6 mai 2026 à 17:12</p>
+    </footer>
+</body>
+</html>
