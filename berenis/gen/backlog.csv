@@ -1,42 +1,46 @@
-Appliquer les corrections et améliorations	70
 Améliorer la mise en évidence de la structure	✅
 Améliorer les performances de l'API (back-only)	0
 Terminer l'étape Barre d'outils (sarbacane)	10
-➜ Berenis “montrable” (v1.0.0-alphaX)	60
-Liste chronologique des modifications (sarbacane)	0
+➜ Berenis “montrable” (v1.0.0-alphaX)	45
+Liste des modifications (sarbacane)	0
 Localisation (sarbacane)	0
 Avoir un outil de recherche	0
+➜ PowerTage	0
+Afficher les capacités d'accueil sur la carte (version simple)	?
+Choix des calques (nom des postes et tronçons souterraine uniquement)	?
+Pouvoir faire un export au format DGS (et RLF ?)	?
+➜ Bonus PowerTage	?
+Appliquer les corrections et améliorations	70
+Introduire la notion de limite de tension doctrinale en BT	?
+Afficher des graphiques minimalistes dans les fiches du volet de droite	0
+Effectuer les calculs BT en repartant de la tension MT amont	✅
 Analyse globale (ADEME) (back-only)	80
 Analyse globale (ADEME)	35
-Afficher des graphiques minimalistes dans les fiches du volet de droite
-Choix des calques (ronds jaunes et bleus, nom des postes, souterrain...)
-Effectuer les calculs BT en repartant de la tension MT amont	✅
-Afficher les capacités d'accueil sur la carte (version simple)
-Pouvoir faire un export au format DGS (et RLF ?)
-Plan de tests (humain)
-➜ Berenis “MVP” (v1.0.0-beta1)
+Plan de tests (humain)	?
+➜ Berenis “MVP” (v1.0.0-beta1)	45
+Afficher les coûts des modifications (calcul économique)
 Rétablir des tests de bout en bout
 Pouvoir sélectionner une structure
-Avoir une page d'authentification propre (via SSO)
+Avoir une page d'authentification propre (via SSO)	✅
+Authentification JWT
+Le GRD peut importer ses données lui-même dans Berenis (propres, et dans un format imposé par nous) --> à faire avec notre format GPKG ?
+Ctrl-Z / Ctrl-Y, mise à la corbeille des variations (au lieu de suppression pure et simple)
+Fusion et gestion des conflits (... git revert...) - version simple
 ➜ Berenis “déployable” (v1.0.0)
-Afficher les coûts des modifications (calcul économique)
-Introduire la notion de limite de tension doctrinale en BT
+Avoir des graphiques améliorés
 Sélection multiple
 Choix du fond de carte (plan, satellite)
 Fonctionnalités d'aperçu dans la modale d'ouverture de projet
-Avoir des graphiques améliorés	0
 Proposer une version “grand public”
 Savoir calculer avec du triphasé déséquilibré (dont renfo auto, et capacité d'accueil)
 Signaler les "problèmes" d'un projet
+Choix des calques (conso ronds jaunes et prod ronds bleus)
 ➜ Berenis 1.x.0
-Ctrl-Z / Ctrl-Y, mise à la corbeille des variations (au lieu de suppression pure et simple)
-Fusion et gestion des conflits (... git revert...)
 Traçabilité
 Suivi des modifications
 Rôles
 Workflow entre les rôles
-Interface super-user pour définir la doctrine
+Interface super-user pour définir la doctrine (lecture seule pour commencer ?)
 Prise en compte de la nature du client (Prod/Conso) dans la modélisation (forfaitaire) des branchements
 Afficher les capacités d'accueil sur la carte (version améliorée)
 Packager "proprement" la version on-prem
-Le GRD peut importer ses données lui-même dans Berenis (propres, et dans un format imposé par nous)
