@@ -1,22 +1,24 @@
 Améliorer la mise en évidence de la structure	✅
-Améliorer les performances de l'API (back-only)	0
-Terminer l'étape Barre d'outils (sarbacane)	10
-➜ Berenis “montrable” (v1.0.0-alphaX)	45
-Liste des modifications (sarbacane)	0
+Améliorer les performances de l'API (back-only)	25
+Plan de tests (humain)	✅
+Terminer l'étape Barre d'outils (sarbacane)	65
+➜ Berenis “montrable” (v1.0.0-alphaX)	80
+Liste des modifications (sarbacane)	✅
 Localisation (sarbacane)	0
 Avoir un outil de recherche	0
-➜ PowerTage	0
-Afficher les capacités d'accueil sur la carte (version simple)	?
-Choix des calques (nom des postes et tronçons souterrains uniquement)	?
-Pouvoir faire un export au format DGS (et RLF ?)	?
+➜ PowerTage	15
+Afficher les capacités d'accueil sur la carte (version simple)	0
+Choix des calques (nom des postes et tronçons souterrains uniquement)	0
+Pouvoir faire un export au format DGS (et RLF ?)	0
+Liste des modifications améliorée	0
+Mise en place du raccordement Operadis (URL back)	0
 ➜ Bonus PowerTage	?
 Appliquer les corrections et améliorations	70
 Introduire la notion de limite de tension doctrinale en BT	?
 Afficher des graphiques minimalistes dans les fiches du volet de droite	0
 Effectuer les calculs BT en repartant de la tension MT amont	✅
-Analyse globale (ADEME) (back-only)	80
+Analyse globale (ADEME) (back-only)	✅
 Analyse globale (ADEME)	35
-Plan de tests (humain)	?
 ➜ Berenis “MVP” (v1.0.0-beta1)	45
 Afficher les coûts des modifications (calcul économique)
 Rétablir des tests de bout en bout
@@ -25,7 +27,7 @@ Avoir une page d'authentification propre (via SSO)	✅
 Authentification JWT
 Le GRD peut importer ses données lui-même dans Berenis (propres, et dans un format imposé par nous) --> à faire avec notre format GPKG ?
 Ctrl-Z / Ctrl-Y, mise à la corbeille des variations (au lieu de suppression pure et simple)
-Fusion et gestion des conflits (... git revert...) - version simple
+Fusion avec simple bouton "Publier" + modale "Impossible" si refusé
 ➜ Berenis “déployable” (v1.0.0)
 Avoir des graphiques améliorés
 Sélection multiple
