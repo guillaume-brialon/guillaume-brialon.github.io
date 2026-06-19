@@ -1,17 +1,18 @@
 Améliorer la mise en évidence de la structure	✅
-Améliorer les performances de l'API (back-only)	25
+Améliorer les performances de l'API (back-only)	✅
 Plan de tests (humain)	✅
-Terminer l'étape Barre d'outils (sarbacane)	65
-➜ Berenis “montrable” (v1.0.0-alphaX)	80
+Terminer l'étape Barre d'outils (sarbacane)	✅
+Déplacer un équipement (sarbacane)	0
+➜ Berenis “montrable” (v1.0.0-alphaX)	100
 Liste des modifications (sarbacane)	✅
-Localisation (sarbacane)	0
-Avoir un outil de recherche	0
-➜ PowerTage	15
-Afficher les capacités d'accueil sur la carte (version simple)	0
-Choix des calques (nom des postes et tronçons souterrains uniquement)	0
-Pouvoir faire un export au format DGS (et RLF ?)	0
+Localisation (sarbacane)	✅
+Avoir un outil de recherche	✅
+➜ PowerTage	✅
+Afficher les capacités d'accueil sur la carte (version simple)	✅
+Choix des calques (nom des postes et tronçons souterrains uniquement)	✅
+Pouvoir faire un export au format DGS (et RLF ?)	✅
 Liste des modifications améliorée	0
-Mise en place du raccordement Operadis (URL back)	0
+Mise en place du raccordement Operadis (URL back)	✅
 ➜ Bonus PowerTage	?
 Appliquer les corrections et améliorations	70
 Introduire la notion de limite de tension doctrinale en BT	?
@@ -19,7 +20,7 @@ Afficher des graphiques minimalistes dans les fiches du volet de droite	0
 Effectuer les calculs BT en repartant de la tension MT amont	✅
 Analyse globale (ADEME) (back-only)	✅
 Analyse globale (ADEME)	35
-➜ Berenis “MVP” (v1.0.0-beta1)	45
+➜ Berenis “MVP” (v1.0.0-beta1)	70
 Afficher les coûts des modifications (calcul économique)
 Rétablir des tests de bout en bout
 Pouvoir sélectionner une structure
