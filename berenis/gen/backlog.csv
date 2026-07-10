@@ -1,49 +1,40 @@
-Améliorer la mise en évidence de la structure	✅
-Améliorer les performances de l'API (back-only)	✅
-Plan de tests (humain)	✅
-Terminer l'étape Barre d'outils (sarbacane)	✅
-Déplacer un équipement (sarbacane)	0
-➜ Berenis “montrable” (v1.0.0-alphaX)	100
-Liste des modifications (sarbacane)	✅
-Localisation (sarbacane)	✅
-Avoir un outil de recherche	✅
+➜ Berenis “montrable” (v1.0.0-alphaX)	✅
 ➜ PowerTage	✅
-Afficher les capacités d'accueil sur la carte (version simple)	✅
-Choix des calques (nom des postes et tronçons souterrains uniquement)	✅
-Pouvoir faire un export au format DGS (et RLF ?)	✅
-Liste des modifications améliorée	0
-Mise en place du raccordement Operadis (URL back)	✅
-➜ Bonus PowerTage	?
+➜ Bonus PowerTage	✅
+Recherche coffret client + transfo	✅
+Cacher les fonctionalités non achevées	
+➜ Prêt pour beta test (déploiement demo + SIG le 10 août)	
 Appliquer les corrections et améliorations	70
-Introduire la notion de limite de tension doctrinale en BT	?
-Afficher des graphiques minimalistes dans les fiches du volet de droite	0
+Volet de droite : jauges pour les valeurs électriques	0
 Effectuer les calculs BT en repartant de la tension MT amont	✅
 Analyse globale (ADEME) (back-only)	✅
-Analyse globale (ADEME)	35
-➜ Berenis “MVP” (v1.0.0-beta1)	70
-Afficher les coûts des modifications (calcul économique)
-Rétablir des tests de bout en bout
-Pouvoir sélectionner une structure
+Analyse globale (ADEME)	60
+➜ Berenis “MVP” (v1.0.0-beta1)	75
+Ctrl-Z / Ctrl-Y très simple pour tester le back	
+Afficher les coûts des modifications (calcul économique)	
+Rétablir des tests de bout en bout	
+Pouvoir sélectionner une structure	
 Avoir une page d'authentification propre (via SSO)	✅
-Authentification JWT
-Le GRD peut importer ses données lui-même dans Berenis (propres, et dans un format imposé par nous) --> à faire avec notre format GPKG ?
-Ctrl-Z / Ctrl-Y, mise à la corbeille des variations (au lieu de suppression pure et simple)
-Fusion avec simple bouton "Publier" + modale "Impossible" si refusé
-➜ Berenis “déployable” (v1.0.0)
-Avoir des graphiques améliorés
-Sélection multiple
-Choix du fond de carte (plan, satellite)
-Fonctionnalités d'aperçu dans la modale d'ouverture de projet
-Proposer une version “grand public”
-Savoir calculer avec du triphasé déséquilibré (dont renfo auto, et capacité d'accueil)
-Signaler les "problèmes" d'un projet
-Choix des calques (conso ronds jaunes et prod ronds bleus)
-➜ Berenis 1.x.0
-Traçabilité
-Suivi des modifications
-Rôles
-Workflow entre les rôles
-Interface super-user pour définir la doctrine (lecture seule pour commencer ?)
-Prise en compte de la nature du client (Prod/Conso) dans la modélisation (forfaitaire) des branchements
-Afficher les capacités d'accueil sur la carte (version améliorée)
-Packager "proprement" la version on-prem
+Authentification JWT	
+Ctrl-Z / Ctrl-Y, mise à la corbeille des variations (au lieu de suppression pure et simple)	
+Fusion avec simple bouton "Publier" + modale "Impossible" si refusé	
+➜ Berenis “déployable” (v1.0.0)	
+Le GRD peut importer ses données lui-même dans Berenis (propres, et dans un format imposé par nous) --> à faire avec notre format GPKG ?	
+Avoir des graphiques améliorés	
+Sélection multiple	
+Choix du fond de carte (plan, satellite)	
+Fonctionnalités d'aperçu dans la modale d'ouverture de projet	
+Proposer une version “grand public”	
+Savoir calculer avec du triphasé déséquilibré (dont renfo auto, et capacité d'accueil)	
+Signaler les "problèmes" d'un projet	
+Choix des calques (conso ronds jaunes et prod ronds bleus)	
+➜ Berenis 1.x.0	
+Traçabilité	
+Suivi des modifications	
+Rôles	
+Workflow entre les rôles	
+Interface super-user pour définir la doctrine (lecture seule pour commencer ?)	
+Prise en compte de la nature du client (Prod/Conso) dans la modélisation (forfaitaire) des branchements	
+Afficher les capacités d'accueil sur la carte (version améliorée)	
+Packager "proprement" la version on-prem	
+Remettre un back office pour nous (gestion des comptes...)	
