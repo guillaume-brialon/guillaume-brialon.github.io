@@ -80,7 +80,7 @@ function parseBacklog(content) {
  */
 function findCurrentMilestoneIndex(milestones) {
   for(let i = 0; i < milestones.length; i++) {
-    if (!milestones[i].progress < 100) {
+    if (milestones[i].progress < 100) {
       return i
     }
   }
